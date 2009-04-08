@@ -29,7 +29,7 @@ t/13_v3.t
 t/14_v4.t
 t/15_v5.t
 t/21_v1_clk.t
-t/23_v3_d_u.t
+t/23_v3.t
 t/31_compat.t
 t/32_compat_du.t
 t/40_nodeid.t

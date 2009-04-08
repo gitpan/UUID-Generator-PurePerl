@@ -1,4 +1,10 @@
 Revision history for Perl extension UUID::Generator::PurePerl
 
+0.02  Wed Apr 08 13:40:00 JST 2009
+        - modified t/23_v3 test not to use Data::UUID,
+          to use pre-calculated parameters.
+          (to figure out problems on x86_64 architecture)
+
 0.01  Tue Apr 07 12:00:00 JST 2009
         - original version
+
