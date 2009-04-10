@@ -2,9 +2,9 @@ package UUID::Generator::PurePerl;
 
 use strict;
 use warnings;
-use 5.008_001;
+use 5.006;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Carp;
 use Digest;

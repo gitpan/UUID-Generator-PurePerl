@@ -5,7 +5,28 @@ use Test::More;
 eval q{ use Data::UUID };
 plan skip_all => 'Data::UUID is not installed', 4  if $@;
 
+use UUID::Generator::PurePerl;
 use UUID::Generator::PurePerl::Compat ();
+
+my $bad_du_md5;
+
+eval q{ use version };
+if ($@) {
+    eval {
+        if (0+$Data::UUID::VERSION < 1.200) {
+            $bad_du_md5 = 1;
+        }
+    };
+    if ($@) {
+        $bad_du_md5 = 1;
+    }
+}
+else {
+    my $du_ver = version->new($Data::UUID::VERSION);
+    if ($du_ver lt '1.200') {
+        $bad_du_md5 = 1;
+    }
+}
 
 plan tests => 18;
 
@@ -32,6 +53,10 @@ my $ug = UUID::Generator::PurePerl::Compat->new();
 my $du = Data::UUID->new();
 
 my $t;
+
+SKIP: {
+    skip "Data::UUID ${Data::UUID::VERSION} has wrong MD5 implementation", 11
+        if $bad_du_md5;
 
 # creates binary (16-byte long binary value) UUID based on particular
 # namespace and name string.
@@ -70,6 +95,8 @@ is( $ug->from_hexstring($t), $du->from_hexstring($t), 'from_hexstring()' );
 # recreate binary UUID from Base64-encoded string
 $t = $du->create_from_name_b64($duns{dns}, 'www.widgets.com');
 is( $ug->from_b64string($t), $du->from_b64string($t), 'from_b64string()' );
+
+};
 
 # returns -1, 0 or 1 depending on whether uuid1 less
 # than, equals to, or greater than uuid2

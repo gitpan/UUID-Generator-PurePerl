@@ -23,7 +23,7 @@ requires:
   Digest: 1
   Time::HiRes: 1.2
   UUID::Object: 0.01
-  perl: 5.8.1
+  perl: 5.6.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.02
+version: 0.03

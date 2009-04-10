@@ -1,5 +1,10 @@
 Revision history for Perl extension UUID::Generator::PurePerl
 
+0.03  Fri Apr 10 10:10:00 JST 2009
+        - modified t/32_compat_du to check Data::UUID version >= 1.200
+          (Data::UUID < 1.200 has wrong MD5 implementation)
+        - changed required Perl version down to 5.006
+
 0.02  Wed Apr 08 13:40:00 JST 2009
         - modified t/23_v3 test not to use Data::UUID,
           to use pre-calculated parameters.
