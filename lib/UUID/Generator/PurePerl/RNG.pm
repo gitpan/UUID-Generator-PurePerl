@@ -39,7 +39,7 @@ __END__
 
 =head1 NAME
 
-UUID::Generator::PurePerl::RNG- Random Number Generator
+UUID::Generator::PurePerl::RNG - Random Number Generator
 
 =head1 DESCRIPTION
 

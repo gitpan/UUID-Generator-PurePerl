@@ -6,6 +6,22 @@ use UUID::Generator::PurePerl::Compat ();
 
 plan tests => 20;
 
+# Data::UUID's binary and base64 represenatation is platform-dependent.
+# So at first, detect endian;
+my $endian;
+if (0) {}
+elsif (pack('L', 0xDEADBEAF) eq pack('V', 0xDEADBEAF)) {
+    # little endian; eg. x86, x86_64, etc
+    $endian = 'little';
+}
+elsif (pack('L', 0xDEADBEAF) eq pack('N', 0xDEADBEAF)) {
+    # big endian; eg. sparc, powerpc, s390, etc
+    $endian = 'big';
+}
+else {
+    die "mal-endian";
+}
+
 my %upns;
 $upns{dns}  = UUID::Generator::PurePerl::Compat::NameSpace_DNS();
 $upns{url}  = UUID::Generator::PurePerl::Compat::NameSpace_URL();
@@ -20,7 +36,8 @@ ok( $ug->create_bin() =~ m{ \A [\x00-\xff]{16} \z }xmso, 'create_bin()' );
 
 # creates binary (16-byte long binary value) UUID based on particular
 # namespace and name string.
-my $v3_bin = pack 'ISSH*H*', 0x3d813cbb, 0x47fb, 0x32ba, '91df', '831e1593ac29';
+my $v3_bin = pack 'LSSH*H*', 0x3d813cbb, 0x47fb, 0x32ba, '91df', '831e1593ac29';
+#                  ^^^^^^^ endian safe representation :)
 is( $ug->create_from_name($upns{dns}, 'www.widgets.com'), $v3_bin, 'create_from_name()' );
 is( $ug->create_from_name_bin($upns{dns}, 'www.widgets.com'), $v3_bin, 'create_from_name_bin()' );
 
@@ -36,7 +53,12 @@ is( uc $ug->create_from_name_hex($upns{dns}, 'www.widgets.com'), '0X3D813CBB47FB
 
 # creates UUID string as a Base64-encoded string
 ok( $ug->create_b64() =~ m{ \A [+/0-9A-Za-z]{22} [=+/0-9A-Za-z]{2} \s* \z }xmso, 'create_b64()' );
-is( $ug->create_from_name_b64($upns{dns}, 'www.widgets.com'), 'uzyBPftHujKR34MeFZOsKQ==', 'create_from_name_b64()' );
+if ($endian eq 'little') {
+    is( $ug->create_from_name_b64($upns{dns}, 'www.widgets.com'), 'uzyBPftHujKR34MeFZOsKQ==', 'create_from_name_b64()' );
+}
+else {
+    is( $ug->create_from_name_b64($upns{dns}, 'www.widgets.com'), 'PYE8u0f7MrqR34MeFZOsKQ==', 'create_from_name_b64()' );
+}
 
 
 # convert to conventional string representation
@@ -47,7 +69,12 @@ is( uc $ug->to_hexstring($ug->create_from_name_bin($upns{dns}, 'www.widgets.com'
 
 # convert to Base64-encoded string
 ok( $ug->to_b64string($ug->create_bin()) =~ m{ \A [+/0-9A-Za-z]{22} [=+/0-9A-Za-z]{2} \s* \z }xmso, 'to_b64string()' );
-is( $ug->to_b64string($ug->create_from_name_bin($upns{dns}, 'www.widgets.com')), 'uzyBPftHujKR34MeFZOsKQ==', 'to_b64string()' );
+if ($endian eq 'little') {
+    is( $ug->to_b64string($ug->create_from_name_bin($upns{dns}, 'www.widgets.com')), 'uzyBPftHujKR34MeFZOsKQ==', 'to_b64string()' );
+}
+else {
+    is( $ug->to_b64string($ug->create_from_name_bin($upns{dns}, 'www.widgets.com')), 'PYE8u0f7MrqR34MeFZOsKQ==', 'to_b64string()' );
+}
 
 
 # recreate binary UUID from string

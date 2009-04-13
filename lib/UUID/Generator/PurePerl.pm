@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use 5.006;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Carp;
 use Digest;
@@ -208,12 +208,12 @@ please refer to <UUID::Object> document.
 This method generates a version 1 UUID.
 
 Version 1 UUID is constructed from machine dependent information
-(such as MAC address binded with network interface)
-and high resolution timestamp,
-so in most cases generated UUIDs are guaranted to be unique over world.
+(such as MAC address bound with network interface)
+and high resolution time-stamp,
+so in most cases generated UUIDs are guaranteed to be unique over world.
 
 But for the same reason, this sort of UUIDs are not suitable for
-security-aware softwares.
+security-aware software.
 
 =head2 $uuidgen->generate_v1mc()
 
@@ -231,7 +231,7 @@ and uses it as source of UUID.
 
 In version 3, MD5 mechanism is used as digest function.
 
-Module for calcurating MD5 digest
+Module for calculating MD5 digest
 (such as Digest::MD5)
 is required to use this method,
 but in modern version perl, those modules are included as core module.
@@ -253,7 +253,7 @@ Algorithm for creating version 5 UUID is quite similar to one of version 3.
 The difference is, SHA-1 is used for digest of name on version 5 UUID,
 whereas MD5 is used on version 3.
 
-Module for calcurating SHA-1 digest
+Module for calculating SHA-1 digest
 (such as Digest::SHA)
 is required to use this method.
 
@@ -271,9 +271,9 @@ is described as follows.
 
 =item Obtain a system-wide global lock
 
-=item From a system-wide shared stable store, read the UUID generator state (such as timestamp, clock sequence, and node ID).
+=item From a system-wide shared stable store, read the UUID generator state (such as time-stamp, clock sequence, and node ID).
 
-=item Retrive current timestamp and node ID
+=item Retrieve current time-stamp and node ID
 
 =item Generate a UUID
 
@@ -286,7 +286,7 @@ is described as follows.
 But in this package, system-wide global locking and persistent storage are
 not used.
 This class only acts on a small world around a process,
-so same UUIDs will be genarated on some conditions over processes, over time.
+so same UUIDs will be generated on some conditions over processes, over time.
 This nature of uniqueness might not be suitable for your application.
 
 In addition, node ID is a not real physical hardware address in current implementation.

@@ -56,7 +56,7 @@ __END__
 
 =head1 NAME
 
-UUID::Generator::PurePerl::Util - Utitily functions for UUID::Generator::PurePerl
+UUID::Generator::PurePerl::Util - Utility functions for UUID::Generator::PurePerl
 
 =head1 DESCRIPTION
 
