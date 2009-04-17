@@ -3,7 +3,8 @@ package UUID::Generator::PurePerl::Util;
 use strict;
 use warnings;
 
-use Exporter 'import';
+use Exporter;
+*import = \&Exporter::import;
 
 our @EXPORT = qw( digest_as_octets digest_as_32bit digest_as_16bit );
 

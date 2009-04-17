@@ -3,9 +3,10 @@ package UUID::Generator::PurePerl::Compat;
 use strict;
 use warnings;
 
-our $VERSION = '0.02';
+our $VERSION = '0.02_01';
 
-use Exporter 'import';
+use Exporter;
+*import = \&Exporter::import;
 
 our @EXPORT = qw( NameSpace_DNS NameSpace_URL NameSpace_OID NameSpace_X500 );
 

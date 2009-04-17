@@ -21,9 +21,10 @@ recommends:
 requires:
   Carp: 0
   Digest: 1
+  Exporter: 5.562
   Time::HiRes: 1.2
-  UUID::Object: 0.01
+  UUID::Object: 0.04
   perl: 5.6.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.04
+version: 0.04_01
