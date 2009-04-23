@@ -1,5 +1,9 @@
 Revision history for Perl extension UUID::Generator::PurePerl
 
+0.04_02 Thu Apr 23 12:30:00 JST 2009
+        - added pseudo hash generator to U::G::P::Util
+          (for case that Digest::MD5 doesn't exist)
+
 0.04_01 Mon Apr 13 11:00:00 JST 2009
         - changed the way to inherit Exporter's import() method
           (to deal with Exporter prior to version 5.57)
