@@ -1,5 +1,9 @@
 Revision history for Perl extension UUID::Generator::PurePerl
 
+0.05    Tue Apr 28 11:00:00 JST 2009
+        - released as 0.05
+          (code except $VERSION is quite the same as 0.04_02)
+
 0.04_02 Thu Apr 23 12:30:00 JST 2009
         - added pseudo hash generator to U::G::P::Util
           (for case that Digest::MD5 doesn't exist)
