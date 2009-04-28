@@ -1,8 +1,17 @@
 use strict;
 use warnings;
-use Test::More tests => 1;
+use Test::More;
 
-use UUID::Generator::PurePerl;
+use UUID::Object;
+plan skip_all
+  => sprintf("Unsupported UUID::Object (%.2f) is installed.",
+             $UUID::Object::VERSION)
+  if $UUID::Object::VERSION > 0.80;
+
+plan tests => 1;
+
+eval q{ use UUID::Generator::PurePerl; };
+die if $@;
 
 my $g = UUID::Generator::PurePerl->new();
 

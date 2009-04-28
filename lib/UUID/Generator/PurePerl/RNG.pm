@@ -36,26 +36,3 @@ sub new {
 
 1;
 __END__
-
-=head1 NAME
-
-UUID::Generator::PurePerl::RNG - Random Number Generator
-
-=head1 DESCRIPTION
-
-UUID::Generator::PurePerl::RNG is Random Number Generator.
-
-INTERNAL USE ONLY.
-
-=head1 AUTHOR
-
-ITO Nobuaki E<lt>banb@cpan.orgE<gt>
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=head1 SEE ALSO
-
-=cut

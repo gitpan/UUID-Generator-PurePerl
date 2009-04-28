@@ -43,24 +43,3 @@ sub rand_32bit {
 
 1;
 __END__
-
-=head1 NAME
-
-UUID::Generator::PurePerl::RNG::MRMT - RNG bridge of Math::Random::MT
-
-=head1 DESCRIPTION
-
-UUID::Generator::PurePerl::RNG::MRMT is RNG bridge interface of Math::Random::MT.
-
-=head1 AUTHOR
-
-ITO Nobuaki E<lt>banb@cpan.orgE<gt>
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=head1 SEE ALSO
-
-=cut

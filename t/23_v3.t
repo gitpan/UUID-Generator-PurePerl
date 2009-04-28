@@ -2,10 +2,16 @@ use strict;
 use warnings;
 use Test::More;
 
+use UUID::Object;
+plan skip_all
+  => sprintf("Unsupported UUID::Object (%.2f) is installed.",
+             $UUID::Object::VERSION)
+  if $UUID::Object::VERSION > 0.80;
+
 plan tests => 5 + 5;
 
-use UUID::Generator::PurePerl;
-use UUID::Object;
+eval q{ use UUID::Generator::PurePerl; };
+die if $@;
 
 my $gen = UUID::Generator::PurePerl->new();
 
@@ -29,7 +35,7 @@ my @dnss = (
 
 while (@dnss) {
     my ($name, $want) = splice @dnss, 0, 2;
-    my $uuid = lc $gen->generate_v3(uuid_ns_dns, $name)->as_string;
+    my $uuid = lc $gen->generate_v3(uuid_ns_dns(), $name)->as_string;
 
     is( $uuid, $want, 'ns:DNS:' . $name );
 }
@@ -54,7 +60,7 @@ my @urls = (
 
 while (@urls) {
     my ($name, $want) = splice @urls, 0, 2;
-    my $uuid = lc $gen->generate_v3(uuid_ns_url, $name)->as_string;
+    my $uuid = lc $gen->generate_v3(uuid_ns_url(), $name)->as_string;
 
     is( $uuid, $want, 'ns:URL:' . $name );
 }

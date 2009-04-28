@@ -108,30 +108,3 @@ sub _pseudo_node_source {
 
 1;
 __END__
-
-=head1 NAME
-
-UUID::Generator::PurePerl::NodeID - Class for node ID retrieval
-
-=head1 DESCRIPTION
-
-UUID::Generator::PurePerl::NodeID is for node ID retrieval.
-
-INTERNAL USE ONLY.
-
-=head1 NOTICE
-
-Interface may be changed in the future.
-
-=head1 AUTHOR
-
-ITO Nobuaki E<lt>banb@cpan.orgE<gt>
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=head1 SEE ALSO
-
-=cut

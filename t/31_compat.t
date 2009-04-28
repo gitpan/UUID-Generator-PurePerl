@@ -2,9 +2,16 @@ use strict;
 use warnings;
 use Test::More;
 
-use UUID::Generator::PurePerl::Compat ();
+use UUID::Object;
+plan skip_all
+  => sprintf("Unsupported UUID::Object (%.2f) is installed.",
+             $UUID::Object::VERSION)
+  if $UUID::Object::VERSION > 0.80;
 
 plan tests => 20;
+
+eval q{ require UUID::Generator::PurePerl::Compat; };
+die if $@;
 
 # Data::UUID's binary and base64 represenatation is platform-dependent.
 # So at first, detect endian;

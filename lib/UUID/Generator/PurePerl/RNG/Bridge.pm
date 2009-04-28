@@ -20,24 +20,3 @@ sub rand_32bit;
 
 1;
 __END__
-
-=head1 NAME
-
-UUID::Generator::PurePerl::RNG::Bridge - abstract class of RNG bridge
-
-=head1 DESCRIPTION
-
-UUID::Generator::PurePerl::RNG::Bridge is abstract class of RNG bridge interface.
-
-=head1 AUTHOR
-
-ITO Nobuaki E<lt>banb@cpan.orgE<gt>
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=head1 SEE ALSO
-
-=cut

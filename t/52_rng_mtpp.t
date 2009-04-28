@@ -2,7 +2,15 @@ use strict;
 use warnings;
 use Test::More;
 
-use UUID::Generator::PurePerl::RNG::MRMTPP;
+use UUID::Object;
+plan skip_all
+  => sprintf("Unsupported UUID::Object (%.2f) is installed.",
+             $UUID::Object::VERSION)
+  if $UUID::Object::VERSION > 0.80;
+
+eval q{ use UUID::Generator::PurePerl::RNG::MRMTPP; };
+die if $@;
+
 our $RNG = 'UUID::Generator::PurePerl::RNG::MRMTPP';
 
 plan skip_all => "${RNG} is not enabled." if ! $RNG->enabled;

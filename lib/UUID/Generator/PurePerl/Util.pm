@@ -112,24 +112,3 @@ sub add {
 
 1;
 __END__
-
-=head1 NAME
-
-UUID::Generator::PurePerl::Util - Utility functions for UUID::Generator::PurePerl
-
-=head1 DESCRIPTION
-
-Several functions useful for UUID::Generator::PurePerl internal are here.
-
-Mainly, internal use only.
-
-=head1 AUTHOR
-
-ITO Nobuaki E<lt>banb@cpan.orgE<gt>
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut

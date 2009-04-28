@@ -1,10 +1,19 @@
 use strict;
 use warnings;
-use Test::More tests => 3;
+use Test::More;
 
-use UUID::Generator::PurePerl;
+use UUID::Object;
+plan skip_all
+  => sprintf("Unsupported UUID::Object (%.2f) is installed.",
+             $UUID::Object::VERSION)
+  if $UUID::Object::VERSION > 0.80;
 
-{
+plan tests => 3;
+
+eval q{ use UUID::Generator::PurePerl; };
+die if $@;
+
+eval q{
 no warnings 'redefine';
 
 sub UUID::Generator::PurePerl::set_timestamp {
@@ -17,7 +26,8 @@ sub UUID::Generator::PurePerl::get_timestamp {
     return $self->{mock_ts} || 0;
 }
 
-}
+};
+die if $@;
 
 my $g = UUID::Generator::PurePerl->new();
 

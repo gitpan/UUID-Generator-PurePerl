@@ -1,5 +1,8 @@
 Revision history for Perl extension UUID::Generator::PurePerl
 
+0.80    Tue Apr 28 13:30:00 JST 2009
+        - this module is going to be marked as DECRECATED
+
 0.05    Tue Apr 28 11:00:00 JST 2009
         - released as 0.05
           (code except $VERSION is quite the same as 0.04_02)
